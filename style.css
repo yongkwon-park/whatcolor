@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 20px;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 25px auto;
+
+    overflow: hidden;
+    border-radius: 20px;
+    background: #222;
+}
+
+#camera {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.target {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+.target-box {
+    width: 50px;
+    height: 50px;
+
+    border: 3px solid white;
+    border-radius: 10px;
+
+    box-shadow: 0 0 5px black;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+
+    padding: 14px 25px;
+    margin: 5px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.result {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 20px auto;
+    padding: 20px;
+
+    background: #1c1c1c;
+    border-radius: 18px;
+}
+
+.color-preview {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 15px;
+
+    background: #333;
+
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+#colorName {
+    margin: 10px;
+}
+
+#status {
+    color: #aaa;
+}
+
+#canvas {
+    display: none;
+}

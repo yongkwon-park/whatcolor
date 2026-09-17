@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatColor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>WhatColor</h1>
+    <p>카메라 중앙에 원하는 색상을 맞춰주세요.</p>
+
+    <div class="camera-container">
+        <video id="camera" autoplay playsinline></video>
+
+        <div class="target">
+            <div class="target-box"></div>
+        </div>
+    </div>
+
+    <button id="startButton">카메라 시작</button>
+    <button id="detectButton" disabled>색상 측정</button>
+
+    <div id="result" class="result">
+        <div id="colorPreview" class="color-preview"></div>
+
+        <h2 id="colorName">색상을 측정해주세요</h2>
+
+        <p>HEX : <strong id="hexValue">-</strong></p>
+        <p>RGB : <strong id="rgbValue">-</strong></p>
+    </div>
+
+    <p id="status">카메라를 시작해주세요.</p>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="app.js"></script>
+</body>
+</html>
