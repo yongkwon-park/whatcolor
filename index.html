@@ -1,42 +1,300 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>WhatColor</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
-    <h1>WhatColor</h1>
-    <p>카메라 중앙에 원하는 색상을 맞춰주세요.</p>
+    <main class="app">
 
-    <div class="camera-container">
-        <video id="camera" autoplay playsinline></video>
+        <!-- =========================
+             HEADER
+        ========================== -->
 
-        <div class="target">
-            <div class="target-box"></div>
-        </div>
-    </div>
+        <header class="header">
 
-    <button id="startButton">카메라 시작</button>
-    <button id="detectButton" disabled>색상 측정</button>
+            <h1>WhatColor</h1>
 
-    <div id="result" class="result">
-        <div id="colorPreview" class="color-preview"></div>
+            <p>
+                옷의 색상을 측정하고
+                어울리는 코디를 찾아보세요.
+            </p>
 
-        <h2 id="colorName">색상을 측정해주세요</h2>
+        </header>
 
-        <p>HEX : <strong id="hexValue">-</strong></p>
-        <p>RGB : <strong id="rgbValue">-</strong></p>
-    </div>
 
-    <p id="status">카메라를 시작해주세요.</p>
+        <!-- =========================
+             CAMERA
+        ========================== -->
 
-    <canvas id="canvas"></canvas>
+        <section class="camera-section">
+
+            <div class="camera-container">
+
+                <video
+                    id="camera"
+                    autoplay
+                    playsinline
+                    muted
+                ></video>
+
+
+                <div class="target">
+
+                    <div class="target-box"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="camera-buttons">
+
+                <button
+                    id="startButton"
+                    class="primary-button"
+                >
+                    카메라 시작
+                </button>
+
+
+                <button
+                    id="detectButton"
+                    class="secondary-button"
+                    disabled
+                >
+                    색상 측정
+                </button>
+
+            </div>
+
+
+            <p id="status">
+                카메라를 시작해주세요.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             COLOR RESULT
+        ========================== -->
+
+        <section
+            id="result"
+            class="result"
+        >
+
+            <div
+                id="colorPreview"
+                class="color-preview"
+            ></div>
+
+
+            <div class="result-text">
+
+                <p class="result-label">
+                    측정된 색상
+                </p>
+
+
+                <h2 id="colorName">
+                    색상을 측정해주세요
+                </h2>
+
+
+                <div class="color-values">
+
+                    <span>
+                        HEX
+                        <strong id="hexValue">
+                            -
+                        </strong>
+                    </span>
+
+
+                    <span>
+                        RGB
+                        <strong id="rgbValue">
+                            -
+                        </strong>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OUTFIT TYPE
+        ========================== -->
+
+        <section
+            id="outfitSection"
+            class="outfit-section hidden"
+        >
+
+            <p class="section-label">
+                이 옷은 어떤 옷인가요?
+            </p>
+
+
+            <div class="outfit-buttons">
+
+                <button
+                    id="topButton"
+                    class="outfit-button"
+                >
+                    👕 상의
+                </button>
+
+
+                <button
+                    id="bottomButton"
+                    class="outfit-button"
+                >
+                    👖 하의
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COORDINATION RESULT
+        ========================== -->
+
+        <section
+            id="recommendationSection"
+            class="recommendation-section hidden"
+        >
+
+            <div class="recommendation-header">
+
+                <p class="section-label">
+                    WhatColor 코디 추천
+                </p>
+
+
+                <h2 id="recommendationTitle">
+                    추천 색상
+                </h2>
+
+
+                <p id="recommendationDescription">
+                </p>
+
+            </div>
+
+
+            <!-- 가장 무난한 조합 -->
+
+            <div class="recommendation-group">
+
+                <div class="group-title">
+
+                    <span>
+                        가장 무난하게
+                    </span>
+
+                    <small>
+                        데일리 추천
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="safeRecommendations"
+                    class="recommendation-grid"
+                ></div>
+
+            </div>
+
+
+            <!-- 톤 조합 -->
+
+            <div class="recommendation-group">
+
+                <div class="group-title">
+
+                    <span>
+                        분위기 맞춰서
+                    </span>
+
+                    <small>
+                        톤온톤 · 자연스러운 조합
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="toneRecommendations"
+                    class="recommendation-grid"
+                ></div>
+
+            </div>
+
+
+            <!-- 포인트 조합 -->
+
+            <div class="recommendation-group">
+
+                <div class="group-title">
+
+                    <span>
+                        포인트 주기
+                    </span>
+
+                    <small>
+                        조금 더 눈에 띄는 조합
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="pointRecommendations"
+                    class="recommendation-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 카메라 분석용 -->
+
+        <canvas id="canvas"></canvas>
+
+    </main>
+
+
+    <!-- 색상 DB가 먼저 로딩되어야 함 -->
 
     <script src="colors.js"></script>
+
     <script src="app.js"></script>
+
 </body>
+
 </html>
